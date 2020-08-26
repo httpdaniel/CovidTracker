@@ -7,6 +7,7 @@ import {
   CardContent,
 } from "@material-ui/core";
 import StatBox from "./StatBox";
+import HighestStatBox from "./HighestStatBox";
 import Map from "./Map";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
@@ -18,13 +19,58 @@ function App() {
   // Selected country
   const [country, setCountry] = useState("worldwide");
 
-  // API
-  const api = "https://disease.sh/v3/covid-19/countries";
+  // Info for chosen country
+  const [countryInfo, setCountryInfo] = useState({});
 
-  // Run once when component loads
+  // Country with most cases
+  const [mostCases, setMostCases] = useState({});
+
+  // Country with most recovered
+  const [mostRecovered, setMostRecovered] = useState({});
+
+  // Country with highest cases
+  const [mostDeaths, setMostDeaths] = useState({});
+
+  // Set worldwide data
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/all")
+      .then((response) => response.json())
+      .then((data) => {
+        setCountryInfo(data);
+      });
+  }, []);
+
+  // Get country with most cases
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/countries?sort=cases")
+      .then((response) => response.json())
+      .then((data) => {
+        setMostCases(data[0]);
+      });
+  }, []);
+
+  // Get country with most recovered
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/countries?sort=recovered")
+      .then((response) => response.json())
+      .then((data) => {
+        setMostRecovered(data[0]);
+      });
+  }, []);
+
+  // Get country with most deaths
+  useEffect(() => {
+    fetch("https://disease.sh/v3/covid-19/countries?sort=deaths")
+      .then((response) => response.json())
+      .then((data) => {
+        setMostDeaths(data[0]);
+      });
+  }, []);
+
+  // Populate dropdown menu
   useEffect(() => {
     const getCountries = async () => {
-      await fetch(api)
+      await fetch("https://disease.sh/v3/covid-19/countries")
         .then((response) => response.json())
         .then((data) => {
           const countries = data.map((country) => ({
@@ -39,11 +85,20 @@ function App() {
   }, []);
 
   // Change country displayed in dropdown
-  const changeCountry = (e) => {
+  const changeCountry = async (e) => {
     const selectedCountry = e.target.value;
-    setCountry(selectedCountry);
 
     // Get data for selected country
+    const url =
+      selectedCountry === "worldwide"
+        ? "https://disease.sh/v3/covid-19/all"
+        : `https://disease.sh/v3/covid-19/countries/${selectedCountry}`;
+    await fetch(url)
+      .then((response) => response.json())
+      .then((data) => {
+        setCountry(selectedCountry);
+        setCountryInfo(data);
+      });
   };
 
   return (
@@ -93,32 +148,40 @@ function App() {
           <div className="app__stats">
             <StatBox
               title="Active Cases"
-              figures="1,292,232"
-              total="4,564,321"
+              figures={countryInfo.todayCases}
+              total={countryInfo.cases}
             />
-            <StatBox title="Recovered" figures="1,233,243" total="2,345,764" />
-            <StatBox title="Deaths" figures="1,345,345" total="2,637,844" />
+            <StatBox
+              title="Recovered"
+              figures={countryInfo.todayRecovered}
+              total={countryInfo.recovered}
+            />
+            <StatBox
+              title="Deaths"
+              figures={countryInfo.todayDeaths}
+              total={countryInfo.deaths}
+            />
           </div>
 
           {/* Map */}
           <Map />
 
-          {/* StatBoxes */}
+          {/* HighestStatBoxes */}
           <div className="highest__stats">
-            <StatBox
+            <HighestStatBox
               title="Country With Highest Comfirmed Cases"
-              figures="USA"
-              total="2,454,376"
+              country={mostCases.country}
+              total={mostCases.cases}
             />
-            <StatBox
+            <HighestStatBox
               title="Country With Highest Recovered Cases"
-              figures="USA"
-              total="1,453,477"
+              country={mostRecovered.country}
+              total={mostRecovered.recovered}
             />
-            <StatBox
+            <HighestStatBox
               title="Country With Highest Death Cases"
-              figures="USA"
-              total="1,523,781"
+              country={mostDeaths.country}
+              total={mostDeaths.deaths}
             />
           </div>
         </div>

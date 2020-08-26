@@ -47,6 +47,14 @@
   justify-content: space-between;
 }
 
+.figures {
+  display: flex;
+  align-items: center;
+  .statBox__figures {
+    padding-left: 4px;
+  }
+}
+
 .worldwide__icon {
   width: 18px;
   height: auto;

@@ -11,11 +11,14 @@ function StatBox({ title, figures, total }) {
         </Typography>
 
         {/* Figures */}
-        <h2 className="statBox__figures">{figures}</h2>
+        <div className="figures">
+          <Typography color="textSecondary">Today:</Typography>
+          <h2 className="statBox__figures">{figures}</h2>
+        </div>
 
         {/* Total */}
         <Typography className="statBox__total" color="textSecondary">
-          {total}
+          Total: {total}
         </Typography>
       </CardContent>
     </Card>
