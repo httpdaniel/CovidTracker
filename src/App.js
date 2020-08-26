@@ -1,10 +1,15 @@
 import React, { useState, useEffect } from "react";
 import { Select, FormControl, MenuItem } from "@material-ui/core";
+import StatBox from "./StatBox";
 import "./styles/App.scss";
+import worldwideIcon from "./img/worldwide.png";
 
 function App() {
   // Array of countries
   const [countries, setCountries] = useState([]);
+
+  // Selected country
+  const [country, setCountry] = useState("worldwide");
 
   // API
   const api = "https://disease.sh/v3/covid-19/countries";
@@ -25,6 +30,12 @@ function App() {
     };
     getCountries();
   }, []);
+
+  // Change country displayed in dropdown
+  const changeCountry = (e) => {
+    const selectedCountry = e.target.value;
+    setCountry(selectedCountry);
+  };
 
   return (
     <div className="app">
@@ -49,17 +60,22 @@ function App() {
         </h1>
       </div>
 
-      {/* InfoBox */}
-      {/* InfoBox */}
-      {/* InfoBox */}
+      <div className="app__stats">
+        {/* InfoBox */}
+        {/* InfoBox */}
+        {/* InfoBox */}
+      </div>
 
       {/* Table */}
       {/* Graph */}
 
       {/* Dropdown */}
       <FormControl className="app__dropdown">
-        <Select variant="outlined" value="abc">
-          <MenuItem value="worldwide">Worldwide</MenuItem>
+        <Select variant="outlined" onChange={changeCountry} value={country}>
+          <MenuItem value="worldwide">
+            Worldwide{" "}
+            <img className="worldwide__icon" src={worldwideIcon} alt="" />
+          </MenuItem>
           {countries.map((country) => (
             <MenuItem value={country.value}>
               {country.name}
