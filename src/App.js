@@ -61,52 +61,56 @@ function App() {
         </h1>
       </div>
 
-      {/* StatBoxes */}
-      <div className="app__stats">
-        <StatBox title="Active Cases" figures="1,292,232" total="4,564,321" />
-        <StatBox title="Recovered" figures="1,233,243" total="2,345,764" />
-        <StatBox title="Deaths" figures="1,345,345" total="2,637,844" />
+      <div className="app__left">
+        {/* StatBoxes */}
+        <div className="app__stats">
+          <StatBox title="Active Cases" figures="1,292,232" total="4,564,321" />
+          <StatBox title="Recovered" figures="1,233,243" total="2,345,764" />
+          <StatBox title="Deaths" figures="1,345,345" total="2,637,844" />
+        </div>
+
+        {/* Dropdown */}
+        <FormControl className="app__dropdown">
+          <Select variant="outlined" onChange={changeCountry} value={country}>
+            <MenuItem value="worldwide">
+              Worldwide{" "}
+              <img className="worldwide__icon" src={worldwideIcon} alt="" />
+            </MenuItem>
+            {countries.map((country) => (
+              <MenuItem value={country.value}>
+                {country.name}
+                <img className="country__flag" src={country.flag} alt="" />
+              </MenuItem>
+            ))}
+          </Select>
+        </FormControl>
+
+        {/* Map */}
+        <Map />
+
+        {/* StatBoxes */}
+        <div className="highest__stats">
+          <StatBox
+            title="Country With Highest Comfirmed Cases"
+            figures="USA"
+            total="2,454,376"
+          />
+          <StatBox
+            title="Country With Highest Recovered Cases"
+            figures="USA"
+            total="1,453,477"
+          />
+          <StatBox
+            title="Country With Highest Death Cases"
+            figures="USA"
+            total="1,523,781"
+          />
+        </div>
       </div>
 
-      {/* Table */}
-      {/* Graph */}
-
-      {/* Dropdown */}
-      <FormControl className="app__dropdown">
-        <Select variant="outlined" onChange={changeCountry} value={country}>
-          <MenuItem value="worldwide">
-            Worldwide{" "}
-            <img className="worldwide__icon" src={worldwideIcon} alt="" />
-          </MenuItem>
-          {countries.map((country) => (
-            <MenuItem value={country.value}>
-              {country.name}
-              <img className="country__flag" src={country.flag} alt="" />
-            </MenuItem>
-          ))}
-        </Select>
-      </FormControl>
-
-      {/* Map */}
-      <Map />
-
-      {/* StatBoxes */}
-      <div className="highest__stats">
-        <StatBox
-          title="Country With Highest Comfirmed Cases"
-          figures="USA"
-          total="2,454,376"
-        />
-        <StatBox
-          title="Country With Highest Recovered Cases"
-          figures="USA"
-          total="1,453,477"
-        />
-        <StatBox
-          title="Country With Highest Death Cases"
-          figures="USA"
-          total="1,523,781"
-        />
+      <div className="app__right">
+        {/* Table */}
+        {/* Graph */}
       </div>
     </div>
   );
