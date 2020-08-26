@@ -60,10 +60,11 @@ function App() {
         </h1>
       </div>
 
+      {/* InfoBoxes */}
       <div className="app__stats">
-        {/* InfoBox */}
-        {/* InfoBox */}
-        {/* InfoBox */}
+        <StatBox title="Active Cases" figures="1,292,232" total="4,564,321" />
+        <StatBox title="Recovered" figures="1,233,243" total="2,345,764" />
+        <StatBox title="Deaths" figures="1,345,345" total="2,637,844" />
       </div>
 
       {/* Table */}
