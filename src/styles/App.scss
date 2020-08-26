@@ -4,6 +4,10 @@
   box-sizing: border-box;
 }
 
+.app__inner {
+  display: flex;
+}
+
 .app__header {
   width: 100%;
   display: flex;
