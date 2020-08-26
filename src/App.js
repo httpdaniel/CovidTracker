@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from "react";
 import { Select, FormControl, MenuItem } from "@material-ui/core";
 import StatBox from "./StatBox";
+import Map from "./Map";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
 
