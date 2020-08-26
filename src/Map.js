@@ -2,7 +2,7 @@ import React from "react";
 
 function Map() {
   return (
-    <div>
+    <div className="map">
       <h1>This is a map</h1>
     </div>
   );

@@ -61,7 +61,7 @@ function App() {
         </h1>
       </div>
 
-      {/* InfoBoxes */}
+      {/* StatBoxes */}
       <div className="app__stats">
         <StatBox title="Active Cases" figures="1,292,232" total="4,564,321" />
         <StatBox title="Recovered" figures="1,233,243" total="2,345,764" />
@@ -86,11 +86,28 @@ function App() {
           ))}
         </Select>
       </FormControl>
-      {/* Map */}
 
-      {/* InfoBox */}
-      {/* InfoBox */}
-      {/* InfoBox */}
+      {/* Map */}
+      <Map />
+
+      {/* StatBoxes */}
+      <div className="highest__stats">
+        <StatBox
+          title="Country With Highest Comfirmed Cases"
+          figures="USA"
+          total="2,454,376"
+        />
+        <StatBox
+          title="Country With Highest Recovered Cases"
+          figures="USA"
+          total="1,453,477"
+        />
+        <StatBox
+          title="Country With Highest Death Cases"
+          figures="USA"
+          total="1,523,781"
+        />
+      </div>
     </div>
   );
 }
