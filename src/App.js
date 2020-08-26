@@ -59,16 +59,13 @@ function App() {
       {/* Dropdown */}
       <FormControl className="app__dropdown">
         <Select variant="outlined" value="abc">
+          <MenuItem value="worldwide">Worldwide</MenuItem>
           {countries.map((country) => (
             <MenuItem value={country.value}>
               {country.name}
               <img className="country__flag" src={country.flag} alt="" />
             </MenuItem>
           ))}
-          {/*<MenuItem value="worldwide">Option 1</MenuItem>
-          <MenuItem value="worldwide">Option 2</MenuItem>
-          <MenuItem value="worldwide">Option 3</MenuItem>
-  <MenuItem value="worldwide">Option 4</MenuItem>*/}
         </Select>
       </FormControl>
       {/* Map */}
