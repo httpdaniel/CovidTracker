@@ -1,9 +1,31 @@
-import React from "react";
+import React, { useState, useEffect } from "react";
 import { Select, FormControl, MenuItem } from "@material-ui/core";
-import logo from "./logo.svg";
 import "./styles/App.scss";
 
 function App() {
+  // Array of countries
+  const [countries, setCountries] = useState([]);
+
+  // API
+  const api = "https://disease.sh/v3/covid-19/countries";
+
+  // Run once when component loads
+  useEffect(() => {
+    const getCountries = async () => {
+      await fetch(api)
+        .then((response) => response.json())
+        .then((data) => {
+          const countries = data.map((country) => ({
+            name: country.country,
+            value: country.countryInfo.iso2,
+            flag: country.countryInfo.flag,
+          }));
+          setCountries(countries);
+        });
+    };
+    getCountries();
+  }, []);
+
   return (
     <div className="app">
       {/* Header */}
@@ -37,10 +59,16 @@ function App() {
       {/* Dropdown */}
       <FormControl className="app__dropdown">
         <Select variant="outlined" value="abc">
-          <MenuItem value="worldwide">Option 1</MenuItem>
+          {countries.map((country) => (
+            <MenuItem value={country.value}>
+              {country.name}
+              <img className="country__flag" src={country.flag} alt="" />
+            </MenuItem>
+          ))}
+          {/*<MenuItem value="worldwide">Option 1</MenuItem>
           <MenuItem value="worldwide">Option 2</MenuItem>
           <MenuItem value="worldwide">Option 3</MenuItem>
-          <MenuItem value="worldwide">Option 4</MenuItem>
+  <MenuItem value="worldwide">Option 4</MenuItem>*/}
         </Select>
       </FormControl>
       {/* Map */}
