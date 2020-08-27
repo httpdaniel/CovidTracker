@@ -14,6 +14,7 @@ import Graph from "./Graph";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
 import { sortData } from "./util";
+import "leaflet/dist/leaflet.css";
 
 function App() {
   // Array of countries
@@ -36,6 +37,12 @@ function App() {
 
   // Date for table
   const [tableData, setTableData] = useState([]);
+
+  // Initial center for map
+  const [mapCenter, setMapCenter] = useState({ lat: 24.7839, lng: -10.5734 });
+
+  // Initial zoom for map
+  const [mapZoom, setMapZoom] = useState(2);
 
   // Set worldwide data
   useEffect(() => {
@@ -172,7 +179,7 @@ function App() {
           </div>
 
           {/* Map */}
-          <Map />
+          <Map center={mapCenter} zoom={mapZoom} />
 
           {/* HighestStatBoxes */}
           {/*<div className="highest__stats">
