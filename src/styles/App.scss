@@ -72,6 +72,11 @@
   justify-content: space-between;
 }
 
+#graphHeading {
+  padding-top: 30px;
+  padding-bottom: 30px;
+}
+
 @media (max-width: 990px) {
   .app__inner {
     flex-direction: column;

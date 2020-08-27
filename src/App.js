@@ -175,7 +175,7 @@ function App() {
           <Map />
 
           {/* HighestStatBoxes */}
-          <div className="highest__stats">
+          {/*<div className="highest__stats">
             <HighestStatBox
               title="Country With Highest Comfirmed Cases"
               country={mostCases.country}
@@ -191,7 +191,7 @@ function App() {
               country={mostDeaths.country}
               total={mostDeaths.deaths}
             />
-          </div>
+          </div>*/}
         </div>
 
         <div className="app__right">
@@ -201,7 +201,7 @@ function App() {
               <h3>Live Cases By Country</h3>
               <Table countries={tableData} />
               {/* Graph */}
-              <h3>Worldwide New Cases</h3>
+              <h3 id="graphHeading">Worldwide New Cases</h3>
               <Graph />
             </CardContent>
           </Card>
