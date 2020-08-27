@@ -170,16 +170,24 @@ function App() {
           {/* StatBoxes */}
           <div className="app__stats">
             <StatBox
+              isRed
+              active={casesType === "cases"}
+              onClick={(e) => setCasesType("cases")}
               title="Active Cases"
               figures={printStat(countryInfo.todayCases)}
               total={printTotal(countryInfo.cases)}
             />
             <StatBox
+              active={casesType === "recovered"}
+              onClick={(e) => setCasesType("recovered")}
               title="Recovered"
               figures={printStat(countryInfo.todayRecovered)}
               total={printTotal(countryInfo.recovered)}
             />
             <StatBox
+              isRed
+              active={casesType === "deaths"}
+              onClick={(e) => setCasesType("deaths")}
               title="Deaths"
               figures={printStat(countryInfo.todayDeaths)}
               total={printTotal(countryInfo.deaths)}
@@ -187,7 +195,12 @@ function App() {
           </div>
 
           {/* Map */}
-          <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
+          <Map
+            casesType={casesType}
+            countries={mapCountries}
+            center={mapCenter}
+            zoom={mapZoom}
+          />
 
           {/* HighestStatBoxes */}
           {/*<div className="highest__stats">
@@ -216,8 +229,11 @@ function App() {
               <h3>Live Cases By Country</h3>
               <Table countries={tableData} />
               {/* Graph */}
-              <h3 id="graphHeading">Worldwide New Cases</h3>
-              <Graph />
+              <h3 id="graphHeading">
+                Worldwide New{" "}
+                {casesType.charAt(0).toUpperCase() + casesType.slice(1)}
+              </h3>
+              <Graph casesType={casesType} />
             </CardContent>
           </Card>
         </div>

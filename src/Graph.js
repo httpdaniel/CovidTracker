@@ -46,10 +46,10 @@ const options = {
   },
 };
 
-function Graph({ casesType = "cases" }) {
+function Graph({ casesType }) {
   const [data, setData] = useState({});
 
-  const buildGraph = (data, casesType = "cases") => {
+  const buildGraph = (data, casesType) => {
     let graphData = [];
     let lastDataPoint;
 
@@ -71,7 +71,7 @@ function Graph({ casesType = "cases" }) {
       await fetch("https://disease.sh/v3/covid-19/historical/all?lastdays=120")
         .then((response) => response.json())
         .then((data) => {
-          let graphData = buildGraph(data, "cases");
+          let graphData = buildGraph(data, casesType);
           setData(graphData);
         });
     };

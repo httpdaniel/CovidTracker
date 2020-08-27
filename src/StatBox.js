@@ -2,9 +2,14 @@ import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
 import "./styles/StatBox.scss";
 
-function StatBox({ title, figures, total }) {
+function StatBox({ active, isRed, isOrange, title, figures, total, ...props }) {
   return (
-    <Card className="statBox">
+    <Card
+      onClick={props.onClick}
+      className={`statBox ${active && "statBox--selected"} ${
+        isRed && "statBox--isRed"
+      }`}
+    >
       <CardContent>
         {/* Title */}
         <Typography className="statBox__title" color="textSecondary">
@@ -14,7 +19,13 @@ function StatBox({ title, figures, total }) {
         {/* Figures */}
         <div className="figures">
           <Typography color="textSecondary"></Typography>
-          <h2 className="statBox__figures">{figures}</h2>
+          <h2
+            className={`statBox__figures ${
+              !isRed && "statBox__figures--green"
+            }`}
+          >
+            {figures}
+          </h2>
         </div>
 
         {/* Total */}
