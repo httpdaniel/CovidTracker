@@ -113,6 +113,9 @@ function App() {
       .then((data) => {
         setCountry(selectedCountry);
         setCountryInfo(data);
+
+        setMapCenter([data.countryInfo.lat, data.countryInfo.lng]);
+        setMapZoom(1);
       });
   };
 
