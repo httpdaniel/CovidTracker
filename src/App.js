@@ -12,7 +12,7 @@ import Map from "./Map";
 import Table from "./Table";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
-import { sortData, sortRecoveries } from "./util";
+import { sortData } from "./util";
 
 function App() {
   // Array of countries
