@@ -44,6 +44,8 @@ function App() {
   // Initial zoom for map
   const [mapZoom, setMapZoom] = useState(2);
 
+  const [mapCountries, setMapCountries] = useState([]);
+
   // Set worldwide data
   useEffect(() => {
     fetch("https://disease.sh/v3/covid-19/all")
@@ -94,6 +96,7 @@ function App() {
           const sortedData = sortData(data);
           setTableData(sortedData);
           setCountries(countries);
+          setMapCountries(data);
         });
     };
     getCountries();
@@ -113,9 +116,8 @@ function App() {
       .then((data) => {
         setCountry(selectedCountry);
         setCountryInfo(data);
-
-        setMapCenter([data.countryInfo.lat, data.countryInfo.lng]);
-        setMapZoom(1);
+        setMapCenter([data.countryInfo.lat, data.countryInfo.long]);
+        setMapZoom(2);
       });
   };
 
@@ -182,7 +184,7 @@ function App() {
           </div>
 
           {/* Map */}
-          <Map center={mapCenter} zoom={mapZoom} />
+          <Map countries={mapCountries} center={mapCenter} zoom={mapZoom} />
 
           {/* HighestStatBoxes */}
           {/*<div className="highest__stats">
