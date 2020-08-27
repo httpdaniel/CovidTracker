@@ -9,3 +9,7 @@ Material UI is used to style the application along with Sass.
 ## API
 
 The API used for this project was sourced from https://disease.sh/ and is used to accumulate the COVID-19 data.
+
+## Link to CovidTracker
+
+https://covidtracker-4bae4.web.app

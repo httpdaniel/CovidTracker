@@ -28,7 +28,8 @@
     }
   }
   .app__dropdown {
-    padding-right: 20px;
+    margin-right: 20px;
+    background-color: white;
   }
 }
 
@@ -40,6 +41,11 @@
 
 .app__left {
   flex: 0.8;
+}
+
+.app__right {
+  display: flex;
+  flex-direction: column;
 }
 
 .app__stats {
@@ -59,6 +65,10 @@
   width: 18px;
   height: auto;
   margin-left: 8px;
+}
+
+.app__graph {
+  flex-grow: 1;
 }
 
 .country__flag {

@@ -233,7 +233,7 @@ function App() {
                 Worldwide New{" "}
                 {casesType.charAt(0).toUpperCase() + casesType.slice(1)}
               </h3>
-              <Graph casesType={casesType} />
+              <Graph className="app__graph" casesType={casesType} />
             </CardContent>
           </Card>
         </div>
