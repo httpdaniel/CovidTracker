@@ -10,6 +10,7 @@ import StatBox from "./StatBox";
 import HighestStatBox from "./HighestStatBox";
 import Map from "./Map";
 import Table from "./Table";
+import Graph from "./Graph";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
 import { sortData } from "./util";
@@ -201,6 +202,7 @@ function App() {
               <Table countries={tableData} />
               {/* Graph */}
               <h3>Worldwide New Cases</h3>
+              <Graph />
             </CardContent>
           </Card>
         </div>
