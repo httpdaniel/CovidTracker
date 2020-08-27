@@ -9,8 +9,10 @@ import {
 import StatBox from "./StatBox";
 import HighestStatBox from "./HighestStatBox";
 import Map from "./Map";
+import Table from "./Table";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
+import { sortData, sortRecoveries } from "./util";
 
 function App() {
   // Array of countries
@@ -30,6 +32,9 @@ function App() {
 
   // Country with highest cases
   const [mostDeaths, setMostDeaths] = useState({});
+
+  // Date for table
+  const [tableData, setTableData] = useState([]);
 
   // Set worldwide data
   useEffect(() => {
@@ -78,6 +83,8 @@ function App() {
             value: country.countryInfo.iso2,
             flag: country.countryInfo.flag,
           }));
+          const sortedData = sortData(data);
+          setTableData(sortedData);
           setCountries(countries);
         });
     };
@@ -191,6 +198,7 @@ function App() {
             <CardContent>
               {/* Table */}
               <h3>Live Cases By Country</h3>
+              <Table countries={tableData} />
               {/* Graph */}
               <h3>Worldwide New Cases</h3>
             </CardContent>
