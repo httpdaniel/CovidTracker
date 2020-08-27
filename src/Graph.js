@@ -46,7 +46,7 @@ const options = {
   },
 };
 
-function Graph() {
+function Graph({ casesType = "cases" }) {
   const [data, setData] = useState({});
 
   const buildGraph = (data, casesType = "cases") => {
@@ -77,7 +77,7 @@ function Graph() {
     };
 
     fetchData();
-  }, []);
+  }, [casesType]);
 
   return (
     <div>
