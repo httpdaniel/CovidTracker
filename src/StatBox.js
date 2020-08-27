@@ -1,5 +1,6 @@
 import React from "react";
 import { Card, CardContent, Typography } from "@material-ui/core";
+import "./styles/StatBox.scss";
 
 function StatBox({ title, figures, total }) {
   return (
@@ -12,7 +13,7 @@ function StatBox({ title, figures, total }) {
 
         {/* Figures */}
         <div className="figures">
-          <Typography color="textSecondary">Today:</Typography>
+          <Typography color="textSecondary"></Typography>
           <h2 className="statBox__figures">{figures}</h2>
         </div>
 

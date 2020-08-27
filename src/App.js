@@ -13,7 +13,7 @@ import Table from "./Table";
 import Graph from "./Graph";
 import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
-import { sortData } from "./util";
+import { sortData, printStat, printTotal } from "./util";
 import "leaflet/dist/leaflet.css";
 
 function App() {
@@ -44,7 +44,10 @@ function App() {
   // Initial zoom for map
   const [mapZoom, setMapZoom] = useState(2);
 
+  // Create circles on map for each country location
   const [mapCountries, setMapCountries] = useState([]);
+
+  const [casesType, setCasesType] = useState("cases");
 
   // Set worldwide data
   useEffect(() => {
@@ -168,18 +171,18 @@ function App() {
           <div className="app__stats">
             <StatBox
               title="Active Cases"
-              figures={countryInfo.todayCases}
-              total={countryInfo.cases}
+              figures={printStat(countryInfo.todayCases)}
+              total={printTotal(countryInfo.cases)}
             />
             <StatBox
               title="Recovered"
-              figures={countryInfo.todayRecovered}
-              total={countryInfo.recovered}
+              figures={printStat(countryInfo.todayRecovered)}
+              total={printTotal(countryInfo.recovered)}
             />
             <StatBox
               title="Deaths"
-              figures={countryInfo.todayDeaths}
-              total={countryInfo.deaths}
+              figures={printStat(countryInfo.todayDeaths)}
+              total={printTotal(countryInfo.deaths)}
             />
           </div>
 

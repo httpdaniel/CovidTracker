@@ -29,6 +29,12 @@ export const sortRecoveries = (data) => {
   return sortedRecoveries.sort((a, b) => (a.recovered > b.recovered ? -1 : 1));
 };
 
+export const printStat = (stat) =>
+  stat ? `+${numeral(stat).format("0.0a")}` : "+0";
+
+export const printTotal = (stat) =>
+  stat ? `${numeral(stat).format("0.0a")}` : "+0";
+
 // Draw circles on map
 export const showDataOnMap = (data, casesType = "cases") =>
   data.map((country) => (
