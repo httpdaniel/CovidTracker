@@ -2,7 +2,13 @@ import React from "react";
 import { Map as LeafletMap, TileLayer } from "react-leaflet";
 import "./styles/Map.scss";
 import { showDataOnMap } from "./util";
-import { Leaflet } from "leaflet";
+
+const bounds = [
+  [
+    [-90, -180],
+    [90, 240],
+  ],
+];
 
 function Map({ countries, casesType, center, zoom, minZoom, maxZoom }) {
   return (
@@ -12,6 +18,7 @@ function Map({ countries, casesType, center, zoom, minZoom, maxZoom }) {
         zoom={zoom}
         minZoom={minZoom}
         maxZoom={maxZoom}
+        maxBounds={bounds}
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
