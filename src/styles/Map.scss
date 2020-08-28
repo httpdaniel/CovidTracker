@@ -7,6 +7,7 @@
   box-shadow: 0 0 8px -4px rgba(0, 0, 0, 0.5);
   .leaflet-container {
     height: 100%;
+    border-radius: 12px;
   }
 }
 
@@ -20,15 +21,11 @@
 }
 
 .info-flag {
-  height: 120px;
+  height: 100px;
   width: 100%;
   background-size: cover;
+  background-position: center;
   border-radius: 8px;
-}
-
-.info-flag img {
-  width: 100px;
-  border-radius: 5px;
 }
 
 .info-confirmed,
