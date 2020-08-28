@@ -31,3 +31,9 @@
 .statBox__figures--green {
   color: #7dd71d;
 }
+
+@media only screen and (max-width: 768px) {
+  .figures {
+    font-size: 0.9rem;
+  }
+}

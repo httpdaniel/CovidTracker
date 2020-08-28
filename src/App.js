@@ -154,7 +154,7 @@ function App() {
         <FormControl className="app__dropdown">
           <Select variant="outlined" onChange={changeCountry} value={country}>
             <MenuItem value="worldwide">
-              Worldwide{" "}
+              Worldwide
               <img className="worldwide__icon" src={worldwideIcon} alt="" />
             </MenuItem>
             {countries.map((country) => (

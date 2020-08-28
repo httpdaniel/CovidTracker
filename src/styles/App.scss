@@ -67,6 +67,10 @@
   margin-left: 8px;
 }
 
+.worldwide__dropdown {
+  display: inline-block;
+}
+
 .app__graph {
   flex-grow: 1;
 }
@@ -93,5 +97,11 @@
   }
   .app__right {
     padding-top: 30px;
+  }
+}
+
+@media only screen and (max-width: 768px) {
+  .worldwide__dropdown {
+    margin-right: 0px;
   }
 }
