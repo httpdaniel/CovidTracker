@@ -19,6 +19,7 @@ function Map({ countries, casesType, center, zoom, minZoom, maxZoom }) {
         minZoom={minZoom}
         maxZoom={maxZoom}
         maxBounds={bounds}
+        maxBoundsViscocity="0.5"
       >
         <TileLayer
           url="https://{s}.tile.openstreetmap.org/{z}/{x}/{y}.png"
