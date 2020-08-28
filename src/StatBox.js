@@ -20,6 +20,7 @@ function StatBox({ active, isRed, isOrange, title, figures, total, ...props }) {
         <div className="figures">
           <Typography color="textSecondary"></Typography>
           <h2
+            id="figuresFont"
             className={`statBox__figures ${
               !isRed && "statBox__figures--green"
             }`}
@@ -30,7 +31,7 @@ function StatBox({ active, isRed, isOrange, title, figures, total, ...props }) {
 
         {/* Total */}
         <Typography className="statBox__total" color="textSecondary">
-          Total: {total}
+          <p id="totalFont">Total: {total}</p>
         </Typography>
       </CardContent>
     </Card>

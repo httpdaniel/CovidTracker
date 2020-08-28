@@ -16,7 +16,7 @@
 .statBox__total {
   color: #6c757d;
   font-weight: 700 !important;
-  font-size: 0.8rem !important;
+  font-size: 0.8rem;
   margin-top: 15px !important;
 }
 
@@ -33,7 +33,12 @@
 }
 
 @media only screen and (max-width: 768px) {
-  .figures {
-    font-size: 0.9rem;
+  #figuresFont {
+    font-size: 1.2rem;
+    margin-left: -6px;
+    margin-bottom: -10px;
+  }
+  #totalFont {
+    font-size: 0.7rem;
   }
 }

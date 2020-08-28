@@ -16,6 +16,7 @@
 }
 
 .info-name {
+  margin-top: 5px;
   font-size: 20px;
   font-weight: bold;
 }
@@ -33,4 +34,31 @@
 .info-deaths {
   font-size: 16px;
   margin-top: 5px;
+}
+
+@media only screen and (max-width: 768px) {
+  .info-container {
+    width: 80px;
+  }
+
+  .info-name {
+    margin-top: 3px;
+    font-size: 10px;
+    font-weight: bold;
+  }
+
+  .info-flag {
+    height: 50px;
+    width: 100%;
+    background-size: cover;
+    background-position: center;
+    border-radius: 8px;
+  }
+
+  .info-confirmed,
+  .info-recovered,
+  .info-deaths {
+    font-size: 9px;
+    margin-top: 7px;
+  }
 }
