@@ -15,6 +15,8 @@ import "./styles/App.scss";
 import worldwideIcon from "./img/worldwide.png";
 import { sortData, printStat, printTotal } from "./util";
 import "leaflet/dist/leaflet.css";
+import { Leaflet } from "leaflet";
+import { set } from "numeral";
 
 function App() {
   // Array of countries
@@ -173,7 +175,7 @@ function App() {
               isRed
               active={casesType === "cases"}
               onClick={(e) => setCasesType("cases")}
-              title="Active Cases"
+              title="Cases"
               figures={printStat(countryInfo.todayCases)}
               total={printTotal(countryInfo.cases)}
             />
@@ -200,6 +202,8 @@ function App() {
             countries={mapCountries}
             center={mapCenter}
             zoom={mapZoom}
+            minZoom="1.5"
+            maxZoom="6"
           />
 
           {/* HighestStatBoxes */}
