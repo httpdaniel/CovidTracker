@@ -41,7 +41,7 @@ function App() {
   const [tableData, setTableData] = useState([]);
 
   // Initial center for map
-  const [mapCenter, setMapCenter] = useState({ lat: 24.7839, lng: -10.5734 });
+  const [mapCenter, setMapCenter] = useState({ lat: 25, lng: 10 });
 
   // Initial zoom for map
   const [mapZoom, setMapZoom] = useState(2);
